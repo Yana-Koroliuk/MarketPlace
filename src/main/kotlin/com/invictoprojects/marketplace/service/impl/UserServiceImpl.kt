@@ -53,6 +53,8 @@ class UserServiceImpl(private val userRepository: UserRepository) : UserService 
         }
     }
 
+    override fun findAllBySubscribedIsTrue() = userRepository.findAllBySubscribedIsTrue()
+
     override fun updatePasswordHash(user: User, newPasswordHash: String) {
         if (!userRepository.existsById(user.id!!)) {
             throw EntityNotFoundException("User doesn't exist")
