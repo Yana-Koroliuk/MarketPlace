@@ -19,7 +19,6 @@ import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.api.extension.ExtendWith
-import org.springframework.data.repository.findByIdOrNull
 import java.math.BigDecimal
 import java.util.Optional
 import javax.persistence.EntityNotFoundException
@@ -250,8 +249,7 @@ internal class ReviewServiceImplTest {
 
         val result = reviewService.findById(authorId, productId)
 
-        verify { reviewRepository.findByIdOrNull(reviewId) }
-        confirmVerified(reviewRepository)
+        verify { reviewRepository.findById(reviewId) }
         assertEquals(review, result)
     }
 
@@ -282,7 +280,6 @@ internal class ReviewServiceImplTest {
 
         assertThrows<EntityNotFoundException> { reviewService.findById(authorId, productId) }
 
-        verify { reviewRepository.findByIdOrNull(reviewId) }
-        confirmVerified(reviewRepository)
+        verify { reviewRepository.findById(reviewId) }
     }
 }
