@@ -113,7 +113,6 @@ class ProductController(
         review.author = userService.getCurrentUser()
         review.product = product
         reviewService.create(review)
-        review.rating?.let { productService.updateAvgRating(product, it) }
         val result = MappingUtils.convertToDto(review)
         return ResponseEntity.status(HttpStatus.CREATED).body(result)
     }
@@ -127,23 +126,18 @@ class ProductController(
         val review = MappingUtils.convertToEntity(reviewCreationDto)
         val product = productService.findById(id)
         val author = userService.getCurrentUser()
-        val prevRating = reviewService.findById(author.id!!, id).rating
         review.author = author
         review.product = product
         reviewService.update(review)
-        productService.updateAvgRating(product, review.rating, prevRating)
         val result = MappingUtils.convertToDto(review)
         return ResponseEntity.ok().body(result)
     }
 
     @DeleteMapping("/{id}/review")
     fun deleteReview(@PathVariable id: Long): ResponseEntity<Any> {
-        val product = productService.findById(id)
         val author = userService.getCurrentUser()
         val review = reviewService.findById(author.id!!, id)
-        val prevRating = review.rating
         reviewService.delete(review)
-        productService.updateAvgRating(product, prevRating = prevRating)
         return ResponseEntity(HttpStatus.NO_CONTENT)
     }
 }
