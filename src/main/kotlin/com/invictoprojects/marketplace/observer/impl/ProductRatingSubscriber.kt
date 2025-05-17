@@ -3,7 +3,6 @@ package com.invictoprojects.marketplace.observer.impl
 import com.invictoprojects.marketplace.observer.ReviewPublisher
 import com.invictoprojects.marketplace.observer.ReviewSubscriber
 import com.invictoprojects.marketplace.service.ProductService
-import com.invictoprojects.marketplace.service.ReviewService
 import org.springframework.stereotype.Component
 
 @Component

@@ -13,7 +13,7 @@ class ReviewPublisherImpl : ReviewPublisher {
         ConcurrentHashMap<ReviewSubscriber, Boolean>()
     )
 
-    override fun addSubscriber(sub: ReviewSubscriber)  { subs += sub }
+    override fun addSubscriber(sub: ReviewSubscriber) { subs += sub }
     override fun removeSubscriber(sub: ReviewSubscriber) { subs -= sub }
 
     override fun notify(productId: Long, newRating: Int?, oldRating: Int?) {
