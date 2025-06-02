@@ -25,6 +25,6 @@ The project was developed using the SpringBoot ecosystem, including Spring REST 
 ## Help
 
 If you have any questions, create an issue and start a discussion
-[github](https://github.com/InvictoProjects/Multiuser_Whiteboard/issues).
+[github](https://github.com/Yana-Koroliuk/MarketPlace/issues).
 ## License
 This project is [GNU General Public](https://www.gnu.org/licenses/gpl-3.0) licensed.
